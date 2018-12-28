@@ -11,9 +11,11 @@
     "IIS Express": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "http://10.2.211.22:6081/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": ""
     },
     "Presentation.Web": {
       "commandName": "Project",

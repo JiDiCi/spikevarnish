@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Requetes.Web.Middleware;
 
 namespace Requetes.Web
 {
@@ -21,9 +22,10 @@ namespace Requetes.Web
 
             app.UseCors(options =>
             {
-                options.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                options.WithOrigins("http://localhost:5000", "http://10.2.211.22:6081").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
             });
             app.UseStaticFiles();
+            app.UseMiddleware<RessourceTagginMiddleware>();
             app.UseMvcWithDefaultRoute();
         }
     }
