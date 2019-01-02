@@ -15,6 +15,22 @@ namespace Presentation.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+
+
+            //Cache profiles
+            //options.CacheProfiles.Add("Default",
+            //    new CacheProfile()
+            //    {
+            //        Duration = 60
+            //    });
+            //options.CacheProfiles.Add("Never",
+            //    new CacheProfile()
+            //    {
+            //        Location = ResponseCacheLocation.None,
+            //        NoStore = true
+            //    });
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -26,6 +42,9 @@ namespace Presentation.Web
 
             app.UseStaticFiles();
             app.UseMiddleware<RessourcePurgingMiddleware>();
+
+
+
             app.UseMvcWithDefaultRoute();
         }
     }

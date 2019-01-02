@@ -18,11 +18,8 @@ namespace Presentation.Web.Middleware
         {
             try
             {
-                string test = "avant";
                 BuildCacheResponse(context);
                 await _next.Invoke(context);
-                test = "apres";
-
             }
             catch (Exception ex)
             {
@@ -37,13 +34,24 @@ namespace Presentation.Web.Middleware
 
         private void BuildCacheResponse(HttpContext context)
         {
-            context.Response.OnStarting(state =>
-            {
-                var httpContext = (HttpContext)state;
-                httpContext.Response.Headers.Add(HeaderNames.ETag, "Test");
+            //    context.Response.OnStarting(state =>
+            //    {
+            //        var httpContext = (HttpContext)state;
 
-                return Task.FromResult(0);
-            }, context);
+            //        //Cache Matching
+            //        httpContext.Response.Headers.Add(HeaderNames.ETag, "123456");
+
+            //        //Allowance
+            //        //httpContext.Response.Headers.Add(HeaderNames.CacheControl, "proxy-revalidate");
+            //        httpContext.Response.Headers.Add(HeaderNames.CacheControl, "max-age=60");
+
+            //        //Freshness
+
+
+
+            //        return Task.FromResult(0);
+            //    }, context);
+            //}
         }
     }
 }
