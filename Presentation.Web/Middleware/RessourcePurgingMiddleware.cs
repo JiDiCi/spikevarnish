@@ -34,6 +34,7 @@ namespace Presentation.Web.Middleware
 
         private void BuildCacheResponse(HttpContext context)
         {
+            //SI ON VEUT GÉRER LES HEADERS VIA UN MIDDLEWARE
             //    context.Response.OnStarting(state =>
             //    {
             //        var httpContext = (HttpContext)state;

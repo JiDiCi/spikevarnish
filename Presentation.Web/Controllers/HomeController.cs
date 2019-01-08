@@ -22,14 +22,13 @@ namespace Presentation.Web.Controllers
                 var httpContext = (HttpContext)state;
 
                 //Cache Matching
+                httpContext.Response.Headers.Add("xkey", "654321");
                 httpContext.Response.Headers.Add(HeaderNames.ETag, "123456");
 
                 //Allowance
-                httpContext.Response.Headers.Add(HeaderNames.CacheControl, "proxy-revalidate, max-age=60");
+                httpContext.Response.Headers.Add(HeaderNames.CacheControl, "proxy-revalidate, max-age=120");
 
                 //Freshness
-
-
 
                 return Task.FromResult(0);
             }, context);

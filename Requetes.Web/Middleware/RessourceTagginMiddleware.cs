@@ -21,10 +21,8 @@ namespace Requetes.Web.Middleware
         {
             try
             {
-                var test = 1;
                 //BuildCacheResponse(context);
                 await _next.Invoke(context);
-                test = 2;
             }
             catch (Exception ex)
             {
@@ -39,23 +37,24 @@ namespace Requetes.Web.Middleware
 
         private void BuildCacheResponse(HttpContext context)
         {
-            context.Response.OnStarting(state =>
-            {
-                var httpContext = (HttpContext)state;
+            //SI ON VEUT GÉRER LES HEADERS VIA UN MIDDLEWARE
+            //context.Response.OnStarting(state =>
+            //{
+            //    var httpContext = (HttpContext)state;
 
-                //Cache Matching
-                httpContext.Response.Headers.Add(HeaderNames.ETag, "123456");
+            //    //Cache Matching
+            //    httpContext.Response.Headers.Add(HeaderNames.ETag, "123456");
 
-                //Allowance
-                //httpContext.Response.Headers.Add(HeaderNames.CacheControl, "proxy-revalidate");
-                httpContext.Response.Headers.Add(HeaderNames.CacheControl, "max-age=60");
+            //    //Allowance
+            //    //httpContext.Response.Headers.Add(HeaderNames.CacheControl, "proxy-revalidate");
+            //    httpContext.Response.Headers.Add(HeaderNames.CacheControl, "max-age=60");
 
-                //Freshness
+            //    //Freshness
 
 
 
-                return Task.FromResult(0);
-            }, context);
+            //    return Task.FromResult(0);
+            //}, context);
         }
     }
 
